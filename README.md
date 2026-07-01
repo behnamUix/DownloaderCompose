@@ -5,7 +5,7 @@ A modern Android file downloader built with **Kotlin**, **Jetpack Compose**, and
 ---
 
 screenshot:
-<Img src="Screenshot_20260702_025627_TestApp.jpg" width=250px height=400px/>
+<Img src="Screenshot_20260702_025627_TestApp.jpg" width=220px height=400px/>
 
 ## 🚀 Features
 
