@@ -1,5 +1,5 @@
 package com.behnamuix.appointment.const
 
 
-const val API_URL = "https://rest.payamak-panel.com/api/SendSMS/SendSMS"
+const val DOWNLOAD_URL="https://github.com/behnamUix/PersianM3Calendar/releases/download/v1.0.0/calendar.apk"
 

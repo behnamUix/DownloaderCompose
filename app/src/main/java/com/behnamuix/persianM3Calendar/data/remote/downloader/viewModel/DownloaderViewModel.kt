@@ -1,13 +1,16 @@
 package com.behnamuix.persianM3Calendar.viewModel
 
 import android.content.Context
+import android.content.Intent
 import android.os.Environment
 import android.util.Log
+import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.behnamuix.persianM3Calendar.data.remote.downloader.repository.DownloaderRepository
 import com.behnamuix.persianM3Calendar.data.remote.errorHandler.DownloadResult
 import com.behnamuix.persianM3Calendar.model.DownloadState
+import com.behnamuix.persianM3Calendar.utils.playVideo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,7 +34,7 @@ class DownloaderViewModel(val downloaderRepo: DownloaderRepository) : ViewModel(
 
     private var job: Job? = null
 
-    fun startDownload(context: Context) {
+    fun startDownload(context: Context, url: String) {
         job?.cancel()
         if (state.value == DownloadState.Downloading) {
             Log.d("LOG", "download is running now")
@@ -39,12 +42,13 @@ class DownloaderViewModel(val downloaderRepo: DownloaderRepository) : ViewModel(
             state.value = DownloadState.Downloading
             progress.value = 0f
             job = viewModelScope.launch(Dispatchers.IO) {
+
                 var dir = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
-                var file = File(dir, "calendar.apk")
+                var file = File(dir, "fast 10.mp4")
 
                 downloaderRepo.downloadFile(
                     file,
-                    "https://github.com/behnamUix/PersianM3Calendar/releases/download/v1.0.0/calendar.apk"
+                    url
                 ).collect {
                     when (it) {
                         is DownloadResult.Progress -> {
@@ -56,6 +60,7 @@ class DownloaderViewModel(val downloaderRepo: DownloaderRepository) : ViewModel(
 
                         is DownloadResult.Success -> {
                             state.value = DownloadState.Completed
+                            playVideo(context, file)
                         }
 
                         is DownloadResult.Error -> {
@@ -69,6 +74,8 @@ class DownloaderViewModel(val downloaderRepo: DownloaderRepository) : ViewModel(
             }
         }
     }
+
+
 
     fun cancelDownload() {
         job?.cancel()
