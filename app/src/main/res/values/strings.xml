@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TestApp</string>
+    <string name="nav_stations_title">ایستگاه‌ها</string>
+    <string name="nav_navigation_title">ناوبری</string>
+    <string name="nav_map_title">نقشه</string>
+    <string name="nav_info_title">اطلاعات</string>
+
+</resources>
