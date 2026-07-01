@@ -1,4 +1,4 @@
-# 📥 Persian M3 Calendar Downloader
+# 📥  Downloader
 
 A modern Android file downloader built with **Kotlin**, **Jetpack Compose**, and **OkHttp**, featuring real-time progress tracking, clean architecture, and robust error handling.
 
