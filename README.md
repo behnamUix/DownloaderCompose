@@ -4,6 +4,9 @@ A modern Android file downloader built with **Kotlin**, **Jetpack Compose**, and
 
 ---
 
+screenshot:
+<Img src="Screenshot_20260702_025627_TestApp.jpg"/>
+
 ## 🚀 Features
 
 - 📡 Download files from direct URLs (supports large files)
